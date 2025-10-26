@@ -1,0 +1,189 @@
+<?php
+return [
+    'ooh_num'    => '01',
+    'ooh_title'  => 'Out of Home Marketing',
+    'ooh_desc'   => 'At IDEA GROUP, we offer the largest OOH coverage in Oman, with a growing network of over 300+ static and digital billboards.
+Our premium digital screens are located in key areas such as Al Azaiba, Al Amerat, Al Khuwayr, Ruwi, Nizwa, Mabela, and Quriyat - ensuring maximum visibility for your brand.
+We also provide digital screens for exhibitions and major events, offering dynamic advertising opportunities. Our team can design both static signage and engaging video content, delivering powerful and impactful campaigns tailored to your goals.
+We don\'t just advertise - we build connections.',
+
+    'gifts_num'    => '02',
+    'gifts_title'  => 'Gifts and Awards',
+    'gifts_desc'   => 'Custom corporate gifts and awards and trophies for events and appreciation.',
+
+    'digital_marketing_num'    => '03',
+    'digital_marketing_title'  => 'Digital Marketing',
+    'digital_marketing_desc'   => 'Integrated digital marketing strategies: SMM, targeting, content creation, and SEO.',
+
+    'interior_num'    => '04',
+    'interior_title'  => 'Interior & Exterior Design',
+    'interior_desc'   => 'Creative interior and exterior design solutions for commercial and personal spaces.',
+
+    'game_num'    => '05',
+    'game_title'  => 'Game Development',
+    'game_desc'   => 'Design and development of engaging and innovative games for various platforms.',
+
+    'video_num'    => '06',
+    'video_title'  => 'Video Production',
+    'video_desc'   => 'Full video production, filming, editing, and creative concepts for brands.',
+
+    'branding_num'    => '07',
+    'branding_title'  => 'Branding',
+    'branding_desc'   => 'Brand strategy and logo design and visual identity that speaks to your brand\'s values.',
+
+    'webdev_num'    => '08',
+    'webdev_title'  => 'Web Development',
+    'webdev_desc'   => 'Modern websites and scalable e-commerce platforms and custom web applications built to scale.',
+
+    'event_num'    => '09',
+    'event_title'  => 'Event Organization',
+    'event_desc'   => 'Complete event planning and execution for corporate conferences and launches.',
+
+       "about_small" => "IDEA GROUP",
+    "about_title" => "About Us",
+    "about_lead" => "At <b>IDEA GROUP</b>, we believe that great ideas change the world.",
+    "about_p1" => "We combine creativity, technology, and expertise to build brands that inspire, surprise, and stay in people\'s minds.",
+    "about_p2" => "From vibrant advertising campaigns lighting up city streets to meticulous branding and digital platforms.<br>From stunning events to spaces designed to tell new stories. From the first sketch to the last pixel.",
+    "about_create_title" => "We Create",
+    "about_create_1" => "Outdoor ads that work for you 24/7.",
+    "about_create_2" => "Corporate gifts and awards people want to keep forever.",
+    "about_create_3" => "Digital strategies that turn customers into fans.",
+    "about_create_4" => "Interiors and exteriors that reflect your essence.",
+    "about_create_5" => "Games that captivate from the first click.",
+    "about_create_6" => "Videos that speak louder than words.",
+    "about_create_7" => "Brands people trust.",
+    "about_create_8" => "Websites that are fast, beautiful, and effective.",
+    "about_create_9" => "Events that are simply unforgettable.",
+    "about_read_more" => "Read More",
+
+
+
+    'industries_title' => 'Industries We Serve',
+    'industries_lead' =>
+        'At IDEA GROUP, we craft ideas and drive growth for businesses of all sizes - from global corporations to dynamic startups.
+Our client companies come from a wide range of industries, but they all have one thing in common: the ambition to grow, excel, and make an impact.',
+
+    'industry_01_num' => '01',
+    'industry_01_title' => 'Large Corporations and Institutions',
+    'industry_01_desc' => 'Oil and gas, tourism, services, finance, energy, construction, retail, and e-commerce.',
+
+    'industry_02_num' => '02',
+    'industry_02_title' => 'Medium-Sized Businesses',
+    'industry_02_desc' => 'Restaurants and cafes, fitness centers, private clinics, shops, hotels, and real estate agencies.',
+
+    'industry_03_num' => '03',
+    'industry_03_title' => 'Small Businesses',
+    'industry_03_desc' => 'Coffee shops, beauty salons, yoga studios, private education centers, travel agencies, and wedding planners.',
+
+    'industry_04_num' => '04',
+    'industry_04_title' => 'Government and Semi-Government Organizations',
+    'industry_04_desc' => 'Ministries, government funds, universities, hospitals, tourism development programs, and infrastructure projects.',
+
+    'industry_05_num' => '05',
+    'industry_05_title' => 'Developers and Construction Companies',
+    'industry_05_desc' => 'Residential real estate, commercial properties, architectural firms, construction campaigns, and more.',
+
+    'industry_06_num' => '06',
+    'industry_06_title' => 'Launch or Rebranding Brands',
+    'industry_06_desc' => 'E-commerce startups, new restaurants, cosmetic brands, private clinics, fashion brands, and more.',
+
+    'industry_07_num' => '07',
+    'industry_07_title' => 'Marketing and Advertising Agencies',
+    'industry_07_desc' => 'Digital agencies, BTL agencies, PR agencies, event companies, wedding agencies, and more.',
+
+    'industry_08_num' => '08',
+    'industry_08_title' => 'IT Companies and Startups',
+    'industry_08_desc' => 'Software developers, mobile applications, SaaS platforms, fintech, game development companies, and more.',
+
+
+     'services_title' => 'Our Services',
+    'services_lead' => 'With so many unique blocks, you can easily build a page without coding. Build your next landing page.',
+    'service_ooh' => 'Out of Home Marketing',
+    'service_branding' => 'Branding',
+    'service_interior' => 'Interior & Exterior Design',
+    'service_digital' => 'Digital Marketing',
+    'service_video' => 'Video Production',
+    'service_gifts' => 'Corporate Gifts and Awards',
+    'service_web' => 'Web Development',
+    'service_event' => 'Event Organization',
+    'service_game' => 'Game Development',
+    'service_permits' => 'Permits and Certifications',
+    'see_all' => 'See All',
+
+
+    'meet_team' => 'Meet the team',
+    'team_1_name' => 'Fahd Al Daghashi',
+    'team_1_title' => 'CEO',
+    'team_2_name' => 'Aisha Al Balushi',
+    'team_2_title' => 'Marketing Manager',
+    'team_3_name' => 'Salim Al Amri',
+    'team_3_title' => 'Creative Director',
+    'team_4_name' => 'Ahmed Al Abri',
+    'team_4_title' => 'Project Engineer',
+    'team_5_name' => 'Fatima Al Lawati',
+    'team_5_title' => 'Account Manager',
+    'team_6_name' => 'Khalid Al Hanaei',
+    'team_6_title' => 'Developer',
+
+   'cta_title' => 'Is your marketing finally working for your business?',
+    'cta_lead1' => 'Dreaming of strategies that truly stand out and deliver results?',
+    'cta_lead2' => 'Leave a request - and we\'ll show you how to make your brand shine and turn marketing into a powerful growth engine.',
+    'cta_btn'   => 'Contact Us',
+
+
+     'footer_about' => 'About Us',
+    'footer_contact' => 'Contact Us',
+    'footer_careers' => 'Careers',
+    'footer_press' => 'Press',
+    'footer_privacy' => 'Privacy Policy',
+    'footer_terms' => 'Terms & Conditions',
+    'footer_contactus' => 'Contact Us',
+    // Services:
+    'service_ooh' => 'Out of Home Marketing',
+    'service_interior' => 'Interior & Exterior Design',
+    'service_branding' => 'Branding',
+    'service_digital' => 'Digital Marketing',
+    'service_video' => 'Video Production',
+    'service_web' => 'Web Development',
+    'service_event' => 'Event Organization',
+    'service_gifts' => 'Corporate Gifts and Awards',
+    'service_game' => 'Game Development',
+    'service_permits' => 'Permits and Certifications',
+
+
+
+      'our_services'    => 'Our Services',
+    'btn_readmore'    => 'Read More',
+    'btn_contact'     => 'Contact Us',
+    'btn_learnmore'   => 'Learn More',
+    'ooh_title'       => 'Out of Home Marketing',
+    'ooh_desc'        => 'Outdoor advertising and billboards and offline marketing to maximize your reach.',
+    'interior_title'  => 'Interior & Exterior Design',
+    'interior_desc'   => 'Interiors and exteriors that reflect your brand.',
+    'branding_title'  => 'Branding',
+    'branding_desc'   => 'Build an unforgettable brand that inspires.',
+    'digital_title'   => 'Digital Marketing',
+    'digital_desc'   => 'Grow with creative and strategic digital solutions.',
+    'events_title'    => 'Events and Exhibitions',
+    'events_desc'     => 'Perfect planning and execution for all types of events.',
+    'exhibitions_title' => 'Exhibitions and Booths',
+    'exhibitions_desc' => 'Creative exhibition booths and stands for all sectors.',
+    'video_title'     => 'Video Production',
+    'video_desc'      => 'Visual content that tells your brand\'s story.',
+    'web_title'       => 'Web Development',
+    'web_desc'        => 'Modern and scalable websites and e-commerce solutions.',
+    'certifications_title' => 'Certifications',
+    'certifications_desc'  => 'ISO certifications and quality standards and business permits for your growth.',
+
+    'contact_title' => 'Get in Touch',
+    'contact_subtitle' => 'Have a project in mind? Let\'s discuss it.',
+    'contact_name' => 'Your Name',
+    'contact_email' => 'Email',
+    'contact_subject' => 'Subject',
+    'contact_message' => 'Your Message',
+    'contact_submit' => 'Send Message',
+    'contact_location_title' => 'Our Location',
+    'contact_location_text' => 'Al Khuwayr, Muscat, Sultanate of Oman',
+    'contact_phone_title' => 'Call Us',
+    'contact_email_title' => 'Email Us',
+];

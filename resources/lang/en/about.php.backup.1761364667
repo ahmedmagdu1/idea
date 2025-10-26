@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * about.php
+ * Last updated: 2025-10-25 03:57:45
+ */
+
+return array (
+  'hero_title' => 'About Us ttt',
+  'hero_subtitle' => 'Idea Group is an ecosystem of creativity, engineering, and communication — uniting three expert companies under one vision.',
+  'aboutus_title' => 'About Us title',
+  'aboutus_lead' => 'Idea Group is an ecosystem of creativity, engineering, and communication — uniting three expert companies under one vision.',
+  'mission_text' => 'Our mission is to craft ideas that leave a mark: in the city, in the digital space, and in people\'s hearts. We don\'t just deliver projects â€” we build holistic solutions that merge outdoor advertising, marketing, video production, spatial design, and innovation.',
+  'company_seraj_kicker' => 'IDEA GROUP',
+  'company_seraj_title' => 'Seraj Media',
+  'company_seraj_sub' => 'by Oneic Media',
+  'company_seraj_description' => 'A media company that works with the urban environment. We turn the city into a platform for brand communication through:',
+  'company_seraj_feature_1' => 'High-impact outdoor advertising (billboards, digital screens, unconventional formats)',
+  'company_seraj_feature_2' => 'Video content for digital displays',
+  'company_seraj_feature_3' => 'Cutting-edge 3D animations that stop people in their tracks',
+  'company_seraj_tagline' => 'Here, advertising becomes art â€” and technology is its canvas.',
+  'company_seraj_btn' => 'EXPLORE MORE',
+  'company_ides_kicker' => 'IDEA GROUP',
+  'company_ides_title' => 'Ides Design',
+  'company_ides_sub' => 'by Oneic Media',
+  'company_ides_description' => 'A creative studio specializing in visual identity and brand experiences. We craft memorable designs that:',
+  'company_ides_feature_1' => 'Brand identity and logo design',
+  'company_ides_feature_2' => 'Digital and print design solutions',
+  'company_ides_feature_3' => 'User experience and interface design',
+  'company_ides_tagline' => 'Where creativity meets strategic thinking.',
+  'company_anmat_kicker' => 'IDEA GROUP',
+  'company_anmat_title' => 'Anmat',
+  'company_anmat_sub' => 'by Oneic Media',
+  'company_anmat_description' => 'A technology company focused on innovative digital solutions. We develop cutting-edge applications that:',
+  'company_anmat_feature_1' => 'Custom web and mobile applications',
+  'company_anmat_feature_2' => 'E-commerce and digital platforms',
+  'company_anmat_feature_3' => 'Advanced analytics and automation tools',
+  'company_anmat_tagline' => 'Transforming ideas into digital reality.',
+  'stats_regions' => '+4 Operating Regions',
+  'stats_regions_label' => 'Operating<br>Regions',
+  'client_chery_alt' => 'Chery',
+  'client_lexus_alt' => 'Lexus logo',
+  'client_rasalhamra_alt' => 'Ras Al Hamra',
+  'client_hyundai_alt' => 'Hyundai',
+  'client_ooredoo_alt' => 'Ooredoo',
+  'client_bankmuscat_alt' => 'Bank Muscat',
+  'client_ford_alt' => 'Ford',
+);
