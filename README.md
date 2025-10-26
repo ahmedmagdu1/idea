@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # IDEA Group Website
 
 ## Overview
@@ -94,3 +95,7 @@ This project is distributed under the MIT License. See the `LICENSE` file (or ad
 
 للاستفسارات أو الدعم، يرجى فتح تذكرة (Issue) على المستودع أو التواصل مع فريق التطوير.
 *** End Patch
+=======
+# idea
+idea group website
+>>>>>>> 96144f58f1e8ba8cb51ca6265c5d700e50b32ce7
