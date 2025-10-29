@@ -1,4 +1,4 @@
-﻿{{-- resources/views/admin/content/edit.blade.php --}}
+{{-- resources/views/admin/content/edit.blade.php --}}
 @extends('admin.layout.app')
 @section('title',"Edit $filePath")
 
@@ -225,7 +225,7 @@
     }
 
     .image-item:hover::after {
-        content: 'âœ“ Insert';
+        content: 'Click to insert';
         position: absolute;
         top: 0;
         left: 0;
@@ -415,6 +415,7 @@
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material-darker.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap">
 @endpush
 
@@ -669,48 +670,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Split.js with enhanced configuration
-    const splitInstance = Split(['#editor','#preview'], {
-        sizes: [50, 50],
-        gutterSize: 6,
-        cursor: 'col-resize',
-        minSize: [300, 300],
-        snapOffset: 30,
-        dragInterval: 1,
-        direction: 'horizontal',
-        onDragEnd: function() {
-            cm.refresh(); // Refresh CodeMirror after resize
+    // Initialize Split.js if available (fallback gracefully)
+    let splitInstance = null;
+    try {
+        if (window.Split) {
+            splitInstance = Split(['#editor','#preview'], {
+                sizes: [50, 50],
+                gutterSize: 6,
+                cursor: 'col-resize',
+                minSize: [300, 300],
+                snapOffset: 30,
+                dragInterval: 1,
+                direction: 'horizontal',
+                onDragEnd: function() {
+                    if (window.cm && typeof cm.refresh === 'function') {
+                        cm.refresh();
+                    }
+                }
+            });
         }
-    });
+    } catch (e) {
+        console.warn('Split init failed:', e);
+    }
 
-    // Initialize Enhanced CodeMirror
-    const cm = CodeMirror(document.getElementById('editor'), {
-        value: @js($fileContent),
-        mode: 'htmlmixed',
-        theme: 'material-darker',
-        lineNumbers: true,
-        autofocus: true,
-        indentUnit: 2,
-        tabSize: 2,
-        lineWrapping: true,
-        foldGutter: true,
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-        autoCloseBrackets: true,
-        autoCloseTags: true,
-        matchBrackets: true,
-        matchTags: true,
-        showCursorWhenSelecting: true,
-        styleActiveLine: true,
-        extraKeys: {
-            "Ctrl-Space": "autocomplete",
-            "F11": function(cm) {
-                cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-            },
-            "Esc": function(cm) {
-                if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-            }
+    // Initialize editor (CodeMirror if available, otherwise plain textarea)
+    let cm = null;
+    let plainEditor = null;
+    (function initEditor(){
+        const host = document.getElementById('editor');
+        const initial = @js($fileContent);
+        if (window.CodeMirror) {
+            cm = CodeMirror(host, {
+                value: initial,
+                mode: 'htmlmixed',
+                theme: 'material-darker',
+                lineNumbers: true,
+                autofocus: true,
+                indentUnit: 2,
+                tabSize: 2,
+                lineWrapping: true,
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                autoCloseBrackets: true,
+                autoCloseTags: true,
+                matchBrackets: true,
+                matchTags: true,
+                showCursorWhenSelecting: true,
+                styleActiveLine: true,
+                extraKeys: {
+                    "Ctrl-Space": "autocomplete",
+                    "F11": function(cm) { cm.setOption("fullScreen", !cm.getOption("fullScreen")); },
+                    "Esc": function(cm) { if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false); },
+                }
+            });
+            window.cm = cm;
+        } else {
+            plainEditor = document.createElement('textarea');
+            plainEditor.id = 'plainEditor';
+            plainEditor.className = 'form-control';
+            plainEditor.style.height = '100%';
+            plainEditor.style.width = '100%';
+            plainEditor.style.border = '0';
+            plainEditor.value = initial;
+            host.appendChild(plainEditor);
+            console.warn('CodeMirror not available; fallback to plain textarea');
         }
-    });
+    })();
+
+    const getContent = () => (cm ? cm.getValue() : (plainEditor ? plainEditor.value : ''));
 
     // Locale switch with smooth transition
     document.getElementById('localeSelect').addEventListener('change', e => {
@@ -737,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: new URLSearchParams({
                     file: '{{ $filePath }}',
-                    content: cm.getValue(),
+                    content: getContent(),
                     update_type: 'full'
                 })
             });
@@ -745,14 +772,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await parseJsonSafe(response);
 
             if (result.success) {
-                saveStatus.textContent = 'Saved âœ“';
+                saveStatus.textContent = 'Saved successfully';
                 showNotification('File saved successfully!', 'success');
             } else {
-                saveStatus.textContent = 'Error âœ•';
+                saveStatus.textContent = 'Save failed';
                 showNotification('Failed to save file: ' + (result.message || 'Unknown error'), 'danger');
             }
         } catch (error) {
-            saveStatus.textContent = 'Error âœ•';
+            saveStatus.textContent = 'Save failed';
             showNotification('Network error occurred while saving', 'danger');
         } finally {
             setLoading(saveBtn, false);
@@ -770,11 +797,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Enhanced Live preview with SSE
+    // Enhanced Live preview with SSE (guarded)
     const previewFrame = document.getElementById('preview');
-    const eventSource = new EventSource('{{ route("admin.content.stream") }}');
+    let eventSource = null;
+    try {
+        eventSource = new EventSource('{{ route("admin.content.stream") }}');
+    } catch (e) {
+        console.warn('SSE not available:', e);
+    }
 
-    eventSource.onmessage = function(event) {
+    eventSource && (eventSource.onmessage = function(event) {
         if (event.data) {
             try {
                 const html = atob(event.data);
@@ -783,11 +815,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Preview decode error:', error);
             }
         }
-    };
+    });
 
-    eventSource.onerror = function(error) {
+    eventSource && (eventSource.onerror = function(error) {
         console.error('SSE connection error:', error);
-    };
+        try { eventSource.close(); } catch(_){}
+    });
 
     const doPreview = _.debounce(async () => {
         try {
@@ -798,7 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({
-                    content: cm.getValue(),
+                    content: getContent(),
                     locale: '{{ $locale }}'
                 })
             });
@@ -807,7 +840,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 300);
 
-    cm.on('change', doPreview);
+    // Initial preview
+    doPreview();
+
+    // Wire content change to preview (CodeMirror or textarea)
+    if (window.cm && cm && typeof cm.on === 'function') {
+        cm.on('change', doPreview);
+    } else {
+        const plain = document.getElementById('plainEditor');
+        plain && plain.addEventListener('input', doPreview);
+    }
+
+    // Unsaved changes guard
+    let dirty = false;
+    const markDirty = () => { dirty = true; };
+    if (window.cm && cm && typeof cm.on === 'function') {
+        cm.on('change', markDirty);
+    } else {
+        const plain = document.getElementById('plainEditor');
+        plain && plain.addEventListener('input', markDirty);
+    }
+    window.addEventListener('beforeunload', (e) => {
+        if (dirty) {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+        try { eventSource && eventSource.close(); } catch(_){}
+    });
+    // Reset dirty on successful save
+    const originalSave = save;
+    async function saveWrapper(){
+        await originalSave();
+        dirty = false;
+    }
+    // Rebind save button and shortcut
+    const saveBtnEl = document.getElementById('saveBtn');
+    if (saveBtnEl) {
+        saveBtnEl.removeEventListener('click', save);
+        saveBtnEl.addEventListener('click', saveWrapper);
+    }
     doPreview(); // Initial preview
 
     // Enhanced Image Upload with Drag & Drop
@@ -939,9 +1010,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageName = imageItem.querySelector('img').alt;
             const imageTag = `<img src="${imageUrl}" alt="${imageName}" class="img-fluid">`;
 
-            const cursor = cm.getCursor();
-            cm.replaceRange(imageTag, cursor);
-            cm.focus();
+            if (window.cm && cm) {
+                const cursor = cm.getCursor();
+                cm.replaceRange(imageTag, cursor);
+                cm.focus();
+            } else {
+                const ta = document.getElementById('plainEditor');
+                if (ta) {
+                    const start = ta.selectionStart || 0;
+                    const end = ta.selectionEnd || 0;
+                    ta.value = ta.value.slice(0, start) + imageTag + ta.value.slice(end);
+                    const pos = start + imageTag.length;
+                    ta.selectionStart = ta.selectionEnd = pos;
+                    ta.focus();
+                }
+            }
 
             const modal = bootstrap.Modal.getInstance(document.getElementById('imageModal'));
             modal.hide();
@@ -995,7 +1078,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let languageData = {};
     const saveLangBtn = document.getElementById('saveLangBtn');
     const addEntryBtn = document.getElementById('addLangEntry');
-    const languageDataUrlTemplate = @json(route('admin.content.language.data', ['locale' => '__LOCALE__']));\n    const parseJsonSafe = async (response) => {\n        try { return await response.json(); }\n        catch(e){ const t = await response.text(); const cleaned=t.replace(/^\\uFEFF+/, '').trimStart(); return JSON.parse(cleaned); }\n    };
+    const languageDataUrlTemplate = @json(route('admin.content.language.data', ['locale' => '__LOCALE__']));
+    const parseJsonSafe = async (response) => {
+        try { return await response.json(); }
+        catch(e){
+            const t = await response.text();
+            const cleaned = t.replace(/^\uFEFF+/, '').trimStart();
+            return JSON.parse(cleaned);
+        }
+    };
     const languageUpdateUrl = @json(route('admin.content.language.update'));
     const csrfToken = @json(csrf_token());
 
@@ -1025,7 +1116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLanguageFile = item.dataset.file;
 
         try {
-            const dataUrl = languageDataUrlTemplate.replace('__LOCALE__', currentLocale);
+            const dataUrl = `${languageDataUrlTemplate.replace('__LOCALE__', currentLocale)}?file=${encodeURIComponent(currentLanguageFile)}`;
             const response = await fetch(dataUrl, {
                 headers: {
                     'Accept': 'application/json',

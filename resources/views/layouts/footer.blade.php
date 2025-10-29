@@ -13,7 +13,7 @@
       <div class="cta-lead mb-4">
         {{ __('main.cta_lead2') }}
       </div>
-      <a href="#contact" class="btn cta-btn px-5 py-3 fw-bold">
+      <a href="{{ url('/contact') }}" class="btn cta-btn px-5 py-3 fw-bold">
         {{ __('main.cta_btn') }}
       </a>
     </div>
@@ -131,8 +131,13 @@
                     <div class="col-6 col-md-4">
                         <div class="footer-head">{{ __('main.footer_contactus') }}</div>
                         <div class="footer-contact">
-                            <a href="mailto:support@ideagroup.om" class="footer-mail">support@ideagroup.om</a><br>
-                            <a href="tel:+968000000000" class="footer-phone">+968 000000000</a>
+                            @php
+                                $email = \App\Models\Setting::get('contact_email', 'support@ideagroup.om');
+                                $phone = \App\Models\Setting::get('contact_phone', '+968 000000000');
+                                $tel = preg_replace('/[^0-9+]/', '', (string) $phone);
+                            @endphp
+                            <a href="mailto:{{ $email }}" class="footer-mail">{{ $email }}</a><br>
+                            <a href="tel:{{ $tel }}" class="footer-phone">{{ $phone }}</a>
                         </div>
                     </div>
                 </div>

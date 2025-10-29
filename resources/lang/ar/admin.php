@@ -1,6 +1,7 @@
-﻿<?php
+<?php
+
 return [
-    'dashboard' => 'لوحة التحكم',
+    'dashboard' => 'لوحة التحكمl',
     'home' => 'الرئيسية',
     'users' => 'المستخدمون',
     'requests' => 'الطلبات',
@@ -26,13 +27,12 @@ return [
     'settings' => 'الإعدادات',
     'recent_activity' => 'نشاط حديث',
     'experimental' => 'تجريبي',
-    'content_update' => 'تحديث محتوى صفحة "من نحن"',
+    'content_update' => 'تحديث محتوى صفحة \"من نحن\"',
     'team_member_added' => 'تم إضافة عضو جديد إلى الفريق',
     'minutes_ago' => 'قبل :count دقيقة',
     'hours_ago' => 'قبل :count ساعة',
     'welcome' => 'مرحباً :name',
     'logout' => 'تسجيل الخروج',
-
     'content_management_dashboard' => 'لوحة إدارة المحتوى',
     'manage_blade_templates' => 'إدارة قوالب Blade وملفات اللغات والوسائط',
     'last_updated' => 'آخر تحديث',
@@ -45,7 +45,6 @@ return [
     'no_images_uploaded' => 'لم يتم رفع أي صور بعد',
     'upload_images_editor' => 'قم برفع الصور من خلال محرر المحتوى',
     'more_images_available' => 'هناك :count صورة إضافية متاحة في المحرر',
-
     'language_manager' => 'مدير اللغات',
     'manage_translation_files' => 'إدارة ملفات الترجمة حسب اللغة',
     'language_files_locale' => 'ملفات اللغة (:locale)',
@@ -73,15 +72,15 @@ return [
     'enter_translation_key' => 'أدخل مفتاح الترجمة الجديد:',
     'key_exists' => 'هذا المفتاح موجود بالفعل!',
     'entry_added' => 'تمت إضافة العنصر بنجاح!',
-    'confirm_remove_entry' => 'هل أنت متأكد من حذف العنصر ":key"؟',
+    'confirm_remove_entry' => 'هل أنت متأكد من حذف العنصر \":key\"؟',
     'entry_removed' => 'تم حذف العنصر بنجاح!',
     'select_file_first' => 'يرجى اختيار ملف لغة أولاً',
     'file_saved' => 'تم حفظ ملف اللغة بنجاح!',
     'save_failed' => 'فشل الحفظ: :message',
     'save_error' => 'خطأ أثناء الحفظ: :message',
     'image_inserted' => 'تم إدراج الصورة بنجاح!',
-    'confirm_delete_image' => 'هل تريد حذف ":name"؟',
-    'image_deleted' => 'تم حذف ":name" بنجاح!',
+    'confirm_delete_image' => 'هل تريد حذف \":name\"؟',
+    'image_deleted' => 'تم حذف \":name\" بنجاح!',
     'delete_failed' => 'فشل الحذف: :message',
     'delete_error' => 'حدث خطأ أثناء الحذف: :message',
     'upload_success' => 'تم رفع :name بنجاح!',

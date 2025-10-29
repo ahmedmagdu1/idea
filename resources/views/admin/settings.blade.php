@@ -11,10 +11,19 @@
                 <h5 class="mb-0">الإعدادات العامة</h5>
             </div>
             <div class="card-body">
-                <form>
+                <form method="POST" action="{{ route('admin.settings.update') }}">
+                    @csrf
                     <div class="mb-3">
                         <label class="form-label">اسم الموقع</label>
                         <input type="text" class="form-control" placeholder="Idea CMS">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">البريد الإلكتروني للتواصل</label>
+                        <input type="email" name="contact_email" class="form-control" placeholder="support@domain.com" value="{{ old('contact_email', $contactEmail ?? '') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">رقم الهاتف للتواصل</label>
+                        <input type="text" name="contact_phone" class="form-control" placeholder="+968 0000 0000" value="{{ old('contact_phone', $contactPhone ?? '') }}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">البريد الافتراضي للإشعارات</label>
@@ -31,7 +40,7 @@
                         <input class="form-check-input" type="checkbox" id="maintenance">
                         <label class="form-check-label" for="maintenance">وضع الصيانة</label>
                     </div>
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">
                         <i class="fa fa-save ms-1"></i> حفظ التغييرات
                     </button>
                 </form>
@@ -52,4 +61,3 @@
     </div>
 </div>
 @endsection
-

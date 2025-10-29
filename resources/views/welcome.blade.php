@@ -537,7 +537,7 @@
                             <li>{{ __('main.about_create_8') }}</li>
                             <li>{{ __('main.about_create_9') }}</li>
                         </ul>
-                        <a href="#" class="btn btn-primary mt-4 px-4 py-2" style="background:#223257; border:none; border-radius:9px; font-size:0.97rem; font-weight:700; letter-spacing:0.7px;">
+                        <a href="{{ url('/about') }}" class="btn btn-primary mt-4 px-4 py-2" style="background:#223257; border:none; border-radius:9px; font-size:0.97rem; font-weight:700; letter-spacing:0.7px;">
                             {{ __('main.about_read_more') }}
                         </a>
                     </div>
@@ -817,7 +817,7 @@
                         <div class="d-flex align-items-center justify-content-between px-2 py-3" style="min-height:46px;">
 
                         <div class="service-title m-0">{{ __('main.service_ooh') }}</div>
-                            <a href="#" class="service-arrow d-flex align-items-center justify-content-center ms-2">
+                        <a href="{{ url('/services') }}" class="service-arrow d-flex align-items-center justify-content-center ms-2">
                                 <span style="font-size:1.15rem;display:inline-block;">&rarr;</span>
                             </a>
                          </div></div>
@@ -828,7 +828,7 @@
                         <img src="{{ asset('images/branding.png') }}" class="service-img mb-0" alt="">
                         <div class="d-flex align-items-center justify-content-between px-2 py-3" style="min-height:46px;">
                             <div class="service-title m-0">{{ __('main.service_branding') }}</div>
-                            <a href="#" class="service-arrow d-flex align-items-center justify-content-center ms-2">
+                        <a href="{{ url('/services') }}" class="service-arrow d-flex align-items-center justify-content-center ms-2">
                                 <span style="font-size:1.15rem;display:inline-block;">&rarr;</span>
                             </a>
                         </div>
@@ -881,7 +881,7 @@
                     <div class="service-card h-100 d-flex flex-column align-items-center justify-content-between">
                         <img src="{{ asset('images/services/'.$srv['img']) }}" class="service-img mb-2" alt="{{ $srv['title'] }}" loading="lazy" width="400" height="300">
                         <div class="service-title mb-2">{{ $srv['title'] }}</div>
-                        <a href="#" class="service-arrow"><span>&rarr;</span></a>
+                        <a href="{{ url('/services') }}" class="service-arrow"><span>&rarr;</span></a>
                     </div>
                 </div>
                 @endforeach
@@ -889,7 +889,7 @@
 
             <!-- زر See All -->
             <div class="pt-4">
-                <a href="#" class="see-all-btn btn btn-dark px-4 rounded-3" style="background:#223257;border:none;font-size:0.95rem;">{{ __('main.see_all') }}</a>
+                <a href="{{ url('/services') }}" class="see-all-btn btn btn-dark px-4 rounded-3" style="background:#223257;border:none;font-size:0.95rem;">{{ __('main.see_all') }}</a>
             </div>
         </div>
     </section>

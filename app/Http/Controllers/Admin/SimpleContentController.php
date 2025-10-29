@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class ContentManagementController extends Controller
+class SimpleContentController extends Controller
 {
     private $pages = ['welcome', 'about', 'services', 'contact'];
     private $languages = ['ar', 'en'];

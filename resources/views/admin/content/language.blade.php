@@ -1,4 +1,4 @@
-﻿{{-- resources/views/admin/content/language.blade.php --}}
+{{-- resources/views/admin/content/language.blade.php --}}
 @extends('admin.layout.app')
 @section('title', 'Language Manager')
 
@@ -77,9 +77,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const localeSelect = document.getElementById('localeSelect');
   let currentLocale = localeSelect.value;
 
-  const languageDataUrlTemplate = @json(route('admin.content.language.data', ['locale' => '__LOCALE__']));\n  const parseJsonSafe = async (response) => {\n    try {\n      return await response.json();\n    } catch (e) {\n      const text = await response.text();\n      const cleaned = text.replace(/^\\uFEFF+/, '').trimStart();\n      return JSON.parse(cleaned);\n    }\n  };
+  const languageDataUrlTemplate = @json(route('admin.content.language.data', ['locale' => '__LOCALE__']));
   const languageUpdateUrl = @json(route('admin.content.language.update'));
   const csrfToken = @json(csrf_token());
+  const languageEditor = document.getElementById('languageEditor');
+  const languageCache = new Map();
+
+  const buildLanguageDataUrl = (locale, file) => {
+    const basePath = languageDataUrlTemplate.replace('__LOCALE__', encodeURIComponent(locale));
+    return file ? `${basePath}?file=${encodeURIComponent(file)}` : basePath;
+  };
+
+  const cloneData = (value) => JSON.parse(JSON.stringify(value ?? {}));
+
+  const showLoadingState = () => {
+    languageEditor.innerHTML = `
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary mb-3" role="status" aria-hidden="true"></div>
+        <p class="text-muted mb-0">Loading translation entries...</p>
+      </div>`;
+  };
+
+  const showErrorState = () => {
+    languageEditor.innerHTML = `
+      <div class="text-center py-5 text-danger">
+        <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
+        <p class="mb-0">Unable to load this language file.</p>
+      </div>`;
+  };
 
   localeSelect.addEventListener('change', (event) => {
     const url = new URL(window.location.href);
@@ -128,8 +153,26 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.classList.add('active');
     currentLanguageFile = trigger.dataset.file;
 
+    if (!currentLanguageFile) {
+      return;
+    }
+
+    const cacheKey = `${currentLocale}:${currentLanguageFile}`;
+    saveLangBtn.disabled = true;
+    addEntryBtn.style.display = 'none';
+
+    if (languageCache.has(cacheKey)) {
+      languageData = cloneData(languageCache.get(cacheKey));
+      renderLanguageEditor();
+      saveLangBtn.disabled = false;
+      addEntryBtn.style.display = 'inline-block';
+      return;
+    }
+
+    showLoadingState();
+
     try {
-      const dataUrl = languageDataUrlTemplate.replace('__LOCALE__', currentLocale);
+      const dataUrl = buildLanguageDataUrl(currentLocale, currentLanguageFile);
       const response = await fetch(dataUrl, {
         headers: {
           'Accept': 'application/json',
@@ -140,27 +183,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      const result = await parseJsonSafe(response);
+      const result = await response.json();
       if (result.success) {
         const fileData = result.data[currentLanguageFile] ?? {};
-        languageData = JSON.parse(JSON.stringify(fileData));
+        const cloned = cloneData(fileData);
+        languageCache.set(cacheKey, cloned);
+        languageData = cloneData(cloned);
         renderLanguageEditor();
         saveLangBtn.disabled = false;
         addEntryBtn.style.display = 'inline-block';
       } else {
         showNotification('Failed to load language data', 'danger');
+        showErrorState();
       }
     } catch (error) {
       console.error('Language load error', error);
       showNotification('Failed to load language data', 'danger');
+      showErrorState();
     }
   });
 
   const renderLanguageEditor = () => {
-    const editor = document.getElementById('languageEditor');
     const entries = Object.entries(languageData);
     if (!entries.length) {
-      editor.innerHTML = `<div class="text-center py-4"><i class="fas fa-file-plus fa-3x text-muted mb-3"></i><p class="text-muted">This language file is empty. Start by adding some entries.</p></div>`;
+      languageEditor.innerHTML = `<div class="text-center py-4"><i class="fas fa-file-plus fa-3x text-muted mb-3"></i><p class="text-muted">This language file is empty. Start by adding some entries.</p></div>`;
       return;
     }
 
@@ -184,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
     });
 
-    editor.innerHTML = `<div class="language-entries">${blocks.join('')}</div>`;
+    languageEditor.innerHTML = `<div class="language-entries">${blocks.join('')}</div>`;
   };
 
   addEntryBtn.addEventListener('click', () => {
@@ -249,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveLangBtn.disabled = true;
     try {
+      const cacheKey = `${currentLocale}:${currentLanguageFile}`;
       const response = await fetch(languageUpdateUrl, {
         method: 'POST',
         headers: {
@@ -268,9 +315,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      const result = await parseJsonSafe(response);
+      const result = await response.json();
       if (result.success) {
         showNotification('Language file saved', 'success');
+        languageCache.set(cacheKey, cloneData(languageData));
       } else {
         showNotification(result.message ?? 'Save failed', 'danger');
       }
@@ -284,4 +332,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 @endpush
-

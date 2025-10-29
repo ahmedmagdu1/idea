@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\ContentManagementController;
 use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\CareersController;
@@ -34,6 +36,9 @@ Route::get('/website', function () {
     return view('website');
 });
 
+// Legacy/alternate slugs
+Route::redirect('/company-profile', '/website');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -64,8 +69,10 @@ Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.lo
 // إضافة إلى ملف routes/web.php
 Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [DashboardController::class, 'users'])->name('users');
+    Route::resource('users', AdminUserController::class)->except(['show', 'create', 'edit']);
+    Route::patch('/users/{user}/toggle-status', [AdminUserController::class, 'toggleStatus'])->name('users.toggle-status');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::post('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
     
 
     // Content Management System

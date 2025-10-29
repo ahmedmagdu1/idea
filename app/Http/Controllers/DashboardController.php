@@ -11,13 +11,10 @@ class DashboardController extends Controller
         return view('admin.dashboard');
     }
 
-    public function users()
-    {
-        return view('admin.users');
-    }
-
     public function settings()
     {
-        return view('admin.settings');
+        $contactEmail = \App\Models\Setting::get('contact_email', '');
+        $contactPhone = \App\Models\Setting::get('contact_phone', '');
+        return view('admin.settings', compact('contactEmail', 'contactPhone'));
     }
 }

@@ -47,8 +47,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.users') ? 'active' : '' }}"
-                               href="{{ route('admin.users') }}">
+                            <a class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}"
+                               href="{{ route('admin.users.index') }}">
                                 <i class="fas fa-users me-2"></i>
                                 {{ __('admin.users') }}
                             </a>

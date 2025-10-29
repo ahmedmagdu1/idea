@@ -1,12 +1,13 @@
 <?php
+
 return [
     // Hero Section
     'hero_title' => 'We Create Style And Atmosphere. Spaces You\'ll Never Forget.',
-    'hero_description' => 'Idea Group is an ecosystem of creativity, engineering, and communication — uniting three expert companies under one vision.',
+    'hero_description' => 'Idea Group is an ecosystem of creativity, engineering, and communication, uniting three expert companies under one vision.',
 
     // Services Tabs
     'service_ooh_title' => 'OOH Marketing',
-    'service_ooh_desc' => 'Outdoor, billboard and offline marketing to maximize your reach.',
+    'service_ooh_desc' => 'Outdoor, billboard, and offline marketing to maximize your reach.',
     'service_gifts_title' => 'Gifts and Trophies',
     'service_gifts_desc' => 'Customized corporate gifts and trophies for memorable branding.',
     'service_digital_title' => 'Digital Marketing',
@@ -18,7 +19,7 @@ return [
     'service_video_title' => 'Video Production',
     'service_video_desc' => 'High-quality video production for commercials and storytelling.',
     'service_branding_title' => 'Branding',
-    'service_branding_desc' => 'Brand identity, strategy and complete brand building solutions.',
+    'service_branding_desc' => 'Brand identity, strategy, and complete brand building solutions.',
     'service_web_title' => 'Web Development',
     'service_web_desc' => 'Websites and digital platforms tailored for your business.',
     'service_events_title' => 'Event Organization',
@@ -44,36 +45,28 @@ return [
 
     // Industries Section
     'industries_title' => 'Industries We Serve',
-    'industries_lead' => 'At Idea Group, we craft ideas and drive growth for businesses of all sizes — from global corporations to dynamic startups. Our clients come from a wide range of industries, but they all have one thing in common: the ambition to grow, stand out, and make an impact.',
-
+    'industries_lead' => 'At Idea Group, we craft ideas and drive growth for businesses of all sizes, from global corporations to dynamic startups. Our clients operate across diverse industries, and they all share the ambition to grow, stand out, and make an impact.',
     'industry_01_num' => '01',
     'industry_01_title' => 'Large Companies & Corporations',
     'industry_01_desc' => 'Oil, gas, tourism, financial services, energy, construction, retail, e-commerce, and more.',
-
     'industry_02_num' => '02',
     'industry_02_title' => 'Medium-sized Businesses',
     'industry_02_desc' => 'Restaurants, cafes, fitness centers, private clinics, boutiques, hotels, real estate agencies, and more.',
-
     'industry_03_num' => '03',
     'industry_03_title' => 'Small Businesses',
     'industry_03_desc' => 'Coffee shops, beauty salons, yoga studios, private education centers, travel agencies, wedding planners, and more.',
-
     'industry_04_num' => '04',
-    'industry_04_title' => 'Govt and Semi–Govt Organisations',
-    'industry_04_desc' => 'Ministries, government funds, universities, hospitals, tourism development programs, infrastructure projects, and more.',
-
+    'industry_04_title' => 'Government and Semi-Government Organisations',
+    'industry_04_desc' => 'Ministries, government funds, universities, hospitals, tourism programs, infrastructure projects, and more.',
     'industry_05_num' => '05',
     'industry_05_title' => 'Developers and Construction Companies',
-    'industry_05_desc' => 'Residential real estate, commercial real estate, architectural bureaus, construction holdings, & more.',
-
+    'industry_05_desc' => 'Residential real estate, commercial real estate, architectural bureaus, construction holdings, and more.',
     'industry_06_num' => '06',
     'industry_06_title' => 'Brands in Launch or Rebranding Stage',
     'industry_06_desc' => 'E-commerce startups, new restaurants, cosmetic brands, private clinics, fashion brands, and more.',
-
     'industry_07_num' => '07',
     'industry_07_title' => 'Marketing, Advertising, and Event Agencies',
     'industry_07_desc' => 'Digital agencies, BTL agencies, PR agencies, event companies, wedding agencies, and more.',
-
     'industry_08_num' => '08',
     'industry_08_title' => 'IT Companies and Startups',
     'industry_08_desc' => 'Software developers, mobile applications, SaaS platforms, fintech, game development companies, and more.',
@@ -99,9 +92,9 @@ return [
     // Client Logos Alt Text
     'client_chery_alt' => 'Chery logo',
     'client_lexus_alt' => 'Lexus logo',
-    'client_rasalhamra_alt' => 'Ras Al Hamra',
-    'client_hyundai_alt' => 'Hyundai',
-    'client_ooredoo_alt' => 'Ooredoo',
-    'client_bankmuscat_alt' => 'Bank Muscat',
-    'client_ford_alt' => 'Ford',
+    'client_rasalhamra_alt' => 'Ras Al Hamra logo',
+    'client_hyundai_alt' => 'Hyundai logo',
+    'client_ooredoo_alt' => 'Ooredoo logo',
+    'client_bankmuscat_alt' => 'Bank Muscat logo',
+    'client_ford_alt' => 'Ford logo',
 ];

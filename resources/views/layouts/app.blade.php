@@ -64,7 +64,7 @@ p, span, li, a {
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top" style="min-height:80px; padding-top:16px; padding-bottom:16px;">
     <div class="container d-flex align-items-center">
         <!-- Logo -->
-        <a class="navbar-brand me-lg-4 me-2" href="#">IDEA GROUP</a>
+        <a class="navbar-brand me-lg-4 me-2" href="{{ url('/') }}">IDEA GROUP</a>
 
 <!-- Menu -->
 <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">

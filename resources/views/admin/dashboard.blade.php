@@ -153,7 +153,7 @@
                     <a href="{{ route('admin.careers.create') }}" class="btn btn-outline-info">
                         <i class="fas fa-plus ms-1"></i> {{ __('admin.new_career') }}
                     </a>
-                    <a href="{{ route('admin.users') }}" class="btn btn-outline-dark">
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-outline-dark">
                         <i class="fas fa-users ms-1"></i> {{ __('admin.users') }}
                     </a>
                     <a href="{{ route('admin.settings') }}" class="btn btn-outline-info">
