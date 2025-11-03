@@ -100,21 +100,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Company Pills/Cards -->
     <div class="aboutus-tabs d-flex justify-content-center flex-wrap gap-3 mb-5">
-      <a href="#" class="aboutus-pill active" data-company="seraj">
+      <button type="button" class="aboutus-pill active" data-company="seraj" data-link="{{ url('/services#ooh') }}">
         <span class="pill-kicker">{{ __('about.company_seraj_kicker') }}</span>
         <span class="pill-title">{{ __('about.company_seraj_title') }}</span>
         <span class="pill-sub">{{ __('about.company_seraj_sub') }}</span>
-      </a>
-      <a href="#" class="aboutus-pill" data-company="ides">
+      </button>
+      <button type="button" class="aboutus-pill" data-company="ides" data-link="{{ url('/services#branding') }}">
         <span class="pill-kicker">{{ __('about.company_ides_kicker') }}</span>
         <span class="pill-title">{{ __('about.company_ides_title') }}</span>
         <span class="pill-sub">{{ __('about.company_ides_sub') }}</span>
-      </a>
-      <a href="#" class="aboutus-pill" data-company="anmat">
+      </button>
+      <button type="button" class="aboutus-pill" data-company="anmat" data-link="{{ url('/services#digital') }}">
         <span class="pill-kicker">{{ __('about.company_anmat_kicker') }}</span>
         <span class="pill-title">{{ __('about.company_anmat_title') }}</span>
         <span class="pill-sub">{{ __('about.company_anmat_sub') }}</span>
-      </a>
+      </button>
     </div>
 
     <!-- Main Content Area -->
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
               {{ __('about.company_seraj_tagline') }}
             </p>
 
-            <a href="#" class="btn aboutus-cta">
+            <a href="{{ url('/services#ooh') }}" class="btn aboutus-cta">
               <span>{{ __('about.company_cta') }}</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -223,18 +223,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  const pills = document.querySelectorAll('.aboutus-pill');
+  const ctaButton = document.querySelector('.aboutus-cta');
+
   // Handle pill switching
-  document.querySelectorAll('.aboutus-pill').forEach(pill => {
+  pills.forEach(pill => {
     pill.addEventListener('click', function(e) {
       e.preventDefault();
 
       // Update active state
-      document.querySelectorAll('.aboutus-pill').forEach(p => p.classList.remove('active'));
+      pills.forEach(p => p.classList.remove('active'));
       this.classList.add('active');
 
       // Get company data
       const company = this.dataset.company;
       const data = companyData[company];
+      if (ctaButton) {
+        const targetLink = this.dataset.link;
+        if (targetLink) {
+          ctaButton.href = targetLink;
+        }
+      }
 
       if (data) {
         // Update content with smooth transition

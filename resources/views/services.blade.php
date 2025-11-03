@@ -437,7 +437,7 @@ body {
   <main class="container-fluid px-5 py-5">
 
     <!-- OOH Marketing Section -->
-    <section class="service-section mb-5">
+    <section id="ooh" class="service-section mb-5">
       <div class="service-card">
         <div class="row g-0">
           <div class="col-lg-7 p-5">
@@ -450,7 +450,7 @@ body {
               <p>We don't just promote — we build connections.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -462,7 +462,7 @@ body {
     </section>
 
     <!-- Interior & Exterior Design Section -->
-    <section class="service-section mb-5">
+    <section id="interior" class="service-section mb-5">
       <div class="service-card service-card-dark">
         <div class="row g-0">
           <div class="col-lg-5">
@@ -475,7 +475,7 @@ body {
               <p>Our team crafts solutions that reflect your brand's philosophy, enhance customer impressions, and maximize functionality. From concept development and 3D visualization to full project supervision — we deliver spaces that inspire and help businesses grow.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom-light" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom-light" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom-light" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -486,7 +486,7 @@ body {
 
 
     <!-- Branding Section -->
-    <section class="service-section mb-5">
+    <section id="branding" class="service-section mb-5">
       <div class="service-card">
         <div class="row g-0">
           <div class="col-lg-7 p-5">
@@ -497,7 +497,7 @@ body {
               <p>We develop logos, visual systems, packaging, brand guidelines, and comprehensive brand strategies that help companies stand out, stay true to their roots, and succeed in a competitive market.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -510,7 +510,7 @@ body {
 
 
         <!-- Digital Marketing Section -->
-    <section class="service-section mb-5">
+    <section id="digital" class="service-section mb-5">
       <div class="service-card service-card-dark">
         <div class="row g-0">
           <div class="col-lg-5">
@@ -523,7 +523,7 @@ body {
               <p>We craft creative, data-driven campaigns across social media, Google Ads, and email marketing to attract, engage, and convert your audience. Our focus is on building meaningful digital experiences that boost brand visibility, loyalty, and growth.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom-light" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom-light" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom-light" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -533,7 +533,7 @@ body {
 
 
     <!-- Video Production Section -->
-    <section class="service-section mb-5">
+    <section id="video" class="service-section mb-5">
       <div class="service-card">
         <div class="row g-0">
           <div class="col-lg-7 p-5">
@@ -552,7 +552,7 @@ body {
               <p>Show who you are — not just in words, but through powerful visuals.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom" href="/catalogue.pdf" download>{{ __("services.download_catalogue") }}</a>
+              <a class="btn btn-custom" href="{{ asset('files/idea-group-catalogue.pdf') }}" download>{{ __("services.download_catalogue") }}</a>
               <a class="btn btn-custom" href="/contact">{{ __("services.contact_us") }}</a>
               <a class="btn btn-custom" href="/services">{{ __("services.explore_more") }}</a>
             </div>
@@ -565,7 +565,7 @@ body {
     </section>
 
     <!-- Business Gifts Section -->
-    <section class="service-section mb-5">
+    <section id="gifts" class="service-section mb-5">
       <div class="service-card service-card-dark">
         <div class="row g-0">
           <div class="col-lg-5">
@@ -580,7 +580,7 @@ body {
             </div>
             <div class="d-flex gap-3 flex-wrap">
               <a class="btn btn-custom-light" href="/services">{{ __("services.learn_more") }}</a>
-              <a class="btn btn-custom-light" href="/portfolio">{{ __("services.gallery") }}</a>
+              <a class="btn btn-custom-light" href="{{ url('/website#portfolio') }}">{{ __("services.gallery") }}</a>
               <a class="btn btn-custom-light" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -589,7 +589,7 @@ body {
     </section>
 
     <!-- Event Organization Section -->
-    <section class="service-section mb-5">
+    <section id="events" class="service-section mb-5">
       <div class="service-card">
         <div class="row g-0">
           <div class="col-lg-7 p-5">
@@ -601,7 +601,7 @@ body {
               <p>We create professional events that leave a lasting impression and drive real business results.</p>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -613,7 +613,7 @@ body {
     </section>
 
     <!-- Web Development Section -->
-    <section class="service-section mb-5">
+    <section id="web" class="service-section mb-5">
       <div class="service-card service-card-dark">
         <div class="row g-0">
           <div class="col-lg-5">
@@ -634,7 +634,7 @@ body {
               </ul>
             </div>
             <div class="d-flex gap-3 flex-wrap">
-              <a class="btn btn-custom-light" href="/company-profile">{{ __("services.company_profile") }}</a>
+              <a class="btn btn-custom-light" href="{{ url('/website#services') }}">{{ __("services.company_profile") }}</a>
               <a class="btn btn-custom-light" href="/contact">{{ __("services.contact_us") }}</a>
             </div>
           </div>
@@ -643,7 +643,7 @@ body {
     </section>
 
     <!-- Permits Section -->
-    <section class="service-section mb-5">
+    <section id="permits" class="service-section mb-5">
       <div class="service-card">
         <div class="row g-0">
           <div class="col-lg-7 p-5">
@@ -670,8 +670,6 @@ body {
 
 
 @endsection
-
-
 
 
 

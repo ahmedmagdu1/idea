@@ -9,14 +9,15 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card stats-card">
             <div class="card-body">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <h6 class="text-white-50 mb-1">{{ __('admin.users') }}</h6>
-                        <h3 class="mb-0">1,234</h3>
+                        <h6 class="text-white-50 mb-1">{{ __('admin.admin_accounts') }}</h6>
+                        <h3 class="mb-1">{{ number_format($stats['admins_total'] ?? 0) }}</h3>
+                        <p class="text-white-50 mb-0 small">
+                            {{ __('admin.admins_active_short', ['count' => number_format($stats['admins_active'] ?? 0)]) }}
+                        </p>
                     </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-users fa-2x opacity-75"></i>
-                    </div>
+                    <i class="fas fa-users fa-2x opacity-75"></i>
                 </div>
             </div>
         </div>
@@ -25,14 +26,18 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card stats-card success">
             <div class="card-body">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <h6 class="text-white-50 mb-1">{{ __('admin.requests') }}</h6>
-                        <h3 class="mb-0">856</h3>
+                        <h6 class="text-white-50 mb-1">{{ __('admin.team_members_label') }}</h6>
+                        <h3 class="mb-1">{{ number_format($stats['team_members_active'] ?? 0) }}</h3>
+                        <p class="text-white-50 mb-0 small">
+                            {{ __('admin.team_members_active_short', [
+                                'active' => number_format($stats['team_members_active'] ?? 0),
+                                'total' => number_format($stats['team_members_total'] ?? 0),
+                            ]) }}
+                        </p>
                     </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-shopping-cart fa-2x opacity-75"></i>
-                    </div>
+                    <i class="fas fa-user-check fa-2x opacity-75"></i>
                 </div>
             </div>
         </div>
@@ -41,14 +46,15 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card stats-card warning">
             <div class="card-body">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <h6 class="text-white-50 mb-1">{{ __('admin.sales') }}</h6>
-                        <h3 class="mb-0">$24,500</h3>
+                        <h6 class="text-white-50 mb-1">{{ __('admin.careers_published_label') }}</h6>
+                        <h3 class="mb-1">{{ number_format($stats['careers_published'] ?? 0) }}</h3>
+                        <p class="text-white-50 mb-0 small">
+                            {{ __('admin.careers_total_short', ['count' => number_format($stats['careers_total'] ?? 0)]) }}
+                        </p>
                     </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-dollar-sign fa-2x opacity-75"></i>
-                    </div>
+                    <i class="fas fa-briefcase fa-2x opacity-75"></i>
                 </div>
             </div>
         </div>
@@ -57,14 +63,15 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card stats-card info">
             <div class="card-body">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <h6 class="text-white-50 mb-1">{{ __('admin.visits') }}</h6>
-                        <h3 class="mb-0">12,456</h3>
+                        <h6 class="text-white-50 mb-1">{{ __('admin.press_published_label') }}</h6>
+                        <h3 class="mb-1">{{ number_format($stats['press_published'] ?? 0) }}</h3>
+                        <p class="text-white-50 mb-0 small">
+                            {{ __('admin.press_total_short', ['count' => number_format($stats['press_total'] ?? 0)]) }}
+                        </p>
                     </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-eye fa-2x opacity-75"></i>
-                    </div>
+                    <i class="fas fa-newspaper fa-2x opacity-75"></i>
                 </div>
             </div>
         </div>
@@ -82,25 +89,29 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>{{ __('admin.user') }}</th>
-                                <th>{{ __('admin.activity') }}</th>
-                                <th>{{ __('admin.date') }}</th>
+                                <th>{{ __('admin.entity') }}</th>
+                                <th>{{ __('admin.details') }}</th>
+                                <th>{{ __('admin.last_update') }}</th>
                                 <th>{{ __('admin.status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>أحمد محمد</td>
-                                <td>تسجيل دخول جديد</td>
-                                <td>منذ 5 دقائق</td>
-                                <td><span class="badge bg-success">{{ __('admin.active') }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>فاطمة علي</td>
-                                <td>إضافة طلب جديد</td>
-                                <td>منذ 15 دقيقة</td>
-                                <td><span class="badge bg-primary">{{ __('admin.completed') }}</span></td>
-                            </tr>
+                            @forelse ($recentActivities as $activity)
+                                <tr>
+                                    <td>{{ $activity['entity'] }}</td>
+                                    <td>{{ $activity['title'] }}</td>
+                                    <td>{{ optional($activity['timestamp'])->diffForHumans() ?: __('admin.not_available') }}</td>
+                                    <td>
+                                        <span class="badge {{ $activity['status_class'] ?? 'bg-secondary' }}">
+                                            {{ $activity['status'] }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">{{ __('admin.no_recent_activity') }}</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -114,14 +125,34 @@
                 <h5 class="mb-0">{{ __('admin.quick_notifications') }}</h5>
             </div>
             <div class="card-body">
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>
-                    {{ __('admin.new_requests_pending') }}
-                </div>
-                <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    {{ __('admin.backup_reminder') }}
-                </div>
+                @php
+                    $hasAlerts = ($drafts['careers'] ?? 0) || ($drafts['press'] ?? 0) || ($drafts['team_members_inactive'] ?? 0);
+                @endphp
+                @if ($hasAlerts)
+                    @if (!empty($drafts['careers']))
+                        <div class="alert alert-warning">
+                            <i class="fas fa-briefcase me-2"></i>
+                            {{ trans_choice('admin.pending_careers', $drafts['careers'], ['count' => number_format($drafts['careers'])]) }}
+                        </div>
+                    @endif
+                    @if (!empty($drafts['press']))
+                        <div class="alert alert-info">
+                            <i class="fas fa-newspaper me-2"></i>
+                            {{ trans_choice('admin.pending_press', $drafts['press'], ['count' => number_format($drafts['press'])]) }}
+                        </div>
+                    @endif
+                    @if (!empty($drafts['team_members_inactive']))
+                        <div class="alert alert-secondary">
+                            <i class="fas fa-user-clock me-2"></i>
+                            {{ trans_choice('admin.inactive_team_members', $drafts['team_members_inactive'], ['count' => number_format($drafts['team_members_inactive'])]) }}
+                        </div>
+                    @endif
+                @else
+                    <div class="alert alert-success mb-0">
+                        <i class="fas fa-check-circle me-2"></i>
+                        {{ __('admin.no_pending_notifications') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -171,14 +202,23 @@
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ __('admin.content_update') }}
-                        <span class="badge bg-light text-dark">{{ __('admin.minutes_ago', ['count' => 5]) }}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ __('admin.team_member_added') }}
-                        <span class="badge bg-light text-dark">{{ __('admin.minutes_ago', ['count' => 30]) }}</span>
-                    </li>
+                    @forelse ($activityFeed as $activity)
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="me-3">
+                                <div class="fw-semibold">{{ $activity['title'] }}</div>
+                                <div class="text-muted small">
+                                    {{ $activity['entity'] }}
+                                    &middot;
+                                    {{ optional($activity['timestamp'])->diffForHumans() ?: __('admin.not_available') }}
+                                </div>
+                            </div>
+                            <span class="badge {{ $activity['status_class'] ?? 'bg-secondary' }}">
+                                {{ $activity['status'] }}
+                            </span>
+                        </li>
+                    @empty
+                        <li class="list-group-item text-muted">{{ __('admin.no_recent_activity') }}</li>
+                    @endforelse
                 </ul>
             </div>
         </div>

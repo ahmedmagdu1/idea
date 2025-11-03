@@ -151,10 +151,10 @@
                     © 2025 Copyright, All Right Reserved
                 </div>
                 <div class="footer-social">
-                    <a href="#" class="footer-social-link"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="footer-social-link"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://twitter.com/ideagroupom" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.facebook.com/ideagroup.om" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/ideagroup.om/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/idea-group-oman/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
         </div>

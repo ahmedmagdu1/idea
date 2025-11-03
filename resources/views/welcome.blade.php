@@ -27,121 +27,121 @@
         <div class="digital-services-tabs ms-lg-auto pt-2 me-0 w-100 pe-lg-5 d-none d-lg-block">
             <ul class="nav flex-column gap-1" id="digitalTabs" role="tablist" aria-label="Digital services tabs">
                             <li class="nav-item">
-                                <a class="nav-link active"
+                                <button type="button" class="nav-link active"
                                    role="tab"
                                    aria-selected="true"
                                    tabindex="0"
                                    data-num="{{ __('main.ooh_num') }}"
                                    data-title="{{ __('main.ooh_title') }}"
                                    data-desc="{{ __('main.ooh_desc') }}"
-                                   href="#" id="tab-service-01" aria-controls="sliderServiceTitle">
+                                   id="tab-service-01" aria-controls="sliderServiceTitle">
                                    {{ __('main.ooh_title') }}
                                    <span class="service-num">{{ __('main.ooh_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.gifts_num') }}"
                                    data-title="{{ __('main.gifts_title') }}"
                                    data-desc="{{ __('main.gifts_desc') }}"
-                                   href="#" id="tab-service-02" aria-controls="sliderServiceTitle">
+                                   id="tab-service-02" aria-controls="sliderServiceTitle">
                                    {{ __('main.gifts_title') }}
                                    <span class="service-num">{{ __('main.gifts_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.digital_marketing_num') }}"
                                    data-title="{{ __('main.digital_marketing_title') }}"
                                    data-desc="{{ __('main.digital_marketing_desc') }}"
-                                   href="#" id="tab-service-03" aria-controls="sliderServiceTitle">
+                                   id="tab-service-03" aria-controls="sliderServiceTitle">
                                    {{ __('main.digital_marketing_title') }}
                                    <span class="service-num">{{ __('main.digital_marketing_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.interior_num') }}"
                                    data-title="{{ __('main.interior_title') }}"
                                    data-desc="{{ __('main.interior_desc') }}"
-                                   href="#" id="tab-service-04" aria-controls="sliderServiceTitle">
+                                   id="tab-service-04" aria-controls="sliderServiceTitle">
                                    {{ __('main.interior_title') }}
                                    <span class="service-num">{{ __('main.interior_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.game_num') }}"
                                    data-title="{{ __('main.game_title') }}"
                                    data-desc="{{ __('main.game_desc') }}"
-                                   href="#" id="tab-service-05" aria-controls="sliderServiceTitle">
+                                   id="tab-service-05" aria-controls="sliderServiceTitle">
                                    {{ __('main.game_title') }}
                                    <span class="service-num">{{ __('main.game_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.video_num') }}"
                                    data-title="{{ __('main.video_title') }}"
                                    data-desc="{{ __('main.video_desc') }}"
-                                   href="#" id="tab-service-06" aria-controls="sliderServiceTitle">
+                                   id="tab-service-06" aria-controls="sliderServiceTitle">
                                    {{ __('main.video_title') }}
                                    <span class="service-num">{{ __('main.video_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.branding_num') }}"
                                    data-title="{{ __('main.branding_title') }}"
                                    data-desc="{{ __('main.branding_desc') }}"
-                                   href="#" id="tab-service-07" aria-controls="sliderServiceTitle">
+                                   id="tab-service-07" aria-controls="sliderServiceTitle">
                                    {{ __('main.branding_title') }}
                                    <span class="service-num">{{ __('main.branding_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.webdev_num') }}"
                                    data-title="{{ __('main.webdev_title') }}"
                                    data-desc="{{ __('main.webdev_desc') }}"
-                                   href="#" id="tab-service-08" aria-controls="sliderServiceTitle">
+                                   id="tab-service-08" aria-controls="sliderServiceTitle">
                                    {{ __('main.webdev_title') }}
                                    <span class="service-num">{{ __('main.webdev_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <button type="button" class="nav-link"
                                    role="tab"
                                    aria-selected="false"
                                    tabindex="-1"
                                    data-num="{{ __('main.event_num') }}"
                                    data-title="{{ __('main.event_title') }}"
                                    data-desc="{{ __('main.event_desc') }}"
-                                   href="#" id="tab-service-09" aria-controls="sliderServiceTitle">
+                                   id="tab-service-09" aria-controls="sliderServiceTitle">
                                    {{ __('main.event_title') }}
                                    <span class="service-num">{{ __('main.event_num') }}</span>
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
